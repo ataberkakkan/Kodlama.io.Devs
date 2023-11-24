@@ -53,6 +53,9 @@ namespace Persistence.Contexts
             Language[] someFeatureEntitySeeds = { new(1, "C#"), new(2, "Java") };
             modelBuilder.Entity<Language>().HasData(someFeatureEntitySeeds);
 
+            Technology[] someTechnologyEntitySeeds = { new(1, 1, ".NET"), new(2, 1, "ASP.NET"), new(3,2, "Spring Boot") };
+            modelBuilder.Entity<Technology>().HasData(someTechnologyEntitySeeds);
+
 
         }
     }
