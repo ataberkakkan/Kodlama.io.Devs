@@ -1,7 +1,8 @@
 ﻿using Application.Features.Technologies.Models;
 using Application.Features.Technologies.Queries.GetListTechnology;
+using Application.Features.Technologies.Queries.GetListTechnologyByDynamic;
 using Core.Application.Requests;
-using Microsoft.AspNetCore.Http;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -15,6 +16,15 @@ namespace WebAPI.Controllers
         {
             GetListTechnologyQuery getListTechnologyQuery = new() { PageRequest = pageRequest };
             TechnologyListModel result = await Mediator.Send(getListTechnologyQuery);
+
+            return Ok(result);
+        }
+
+        [HttpPost("getlist/bydynamic")]
+        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, Dynamic dynamic)
+        {
+            GetListTechnologyByDynamicQuery getListTechnologyByDynamicQuery = new() { PageRequest = pageRequest, Dynamic = dynamic };
+            TechnologyListModel result = await Mediator.Send(getListTechnologyByDynamicQuery);
 
             return Ok(result);
         }
