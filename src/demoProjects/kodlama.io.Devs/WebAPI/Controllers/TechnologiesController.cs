@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("getlist/bydynamic")]
-        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, Dynamic dynamic)
+        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
         {
             GetListTechnologyByDynamicQuery getListTechnologyByDynamicQuery = new() { PageRequest = pageRequest, Dynamic = dynamic };
             TechnologyListModel result = await Mediator.Send(getListTechnologyByDynamicQuery);
