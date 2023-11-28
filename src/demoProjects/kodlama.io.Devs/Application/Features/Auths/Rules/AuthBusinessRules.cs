@@ -26,5 +26,14 @@ namespace Application.Features.Auths.Rules
                 throw new BusinessException("User already exists");
             }
         }
+
+        public async Task CheckIfUserExistsByEmail(string email)
+        {
+            User? user = await _userRepository.GetAsync(u => u.Email == email);
+            if (user == null)
+            {
+                throw new BusinessException("User not found");
+            }
+        }
     }
 }
