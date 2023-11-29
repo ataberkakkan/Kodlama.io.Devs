@@ -15,11 +15,6 @@
   <ItemGroup>
     <Folder Include="Features\Languages\Constants\" />
     <Folder Include="Features\Technologies\Constants\" />
-    <Folder Include="Features\UserOperationClaims\Commands\" />
-    <Folder Include="Features\UserOperationClaims\Dtos\" />
-    <Folder Include="Features\UserOperationClaims\Models\" />
-    <Folder Include="Features\UserOperationClaims\Proiles\" />
-    <Folder Include="Features\UserOperationClaims\Queries\" />
     <Folder Include="Features\UserOperationClaims\Rules\" />
   </ItemGroup>
 
