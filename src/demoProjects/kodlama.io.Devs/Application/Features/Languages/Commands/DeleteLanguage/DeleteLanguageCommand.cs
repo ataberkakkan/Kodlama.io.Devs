@@ -1,6 +1,7 @@
 ﻿using Application.Features.Languages.Dtos;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -11,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Languages.Commands.DeleteLanguage
 {
-    public class DeleteLanguageCommand : IRequest<DeletedLanguageDto>
+    public class DeleteLanguageCommand : IRequest<DeletedLanguageDto>, ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles { get; } = { "Admin" };
 
         public class DeleteLanguageCommandHandler : IRequestHandler<DeleteLanguageCommand, DeletedLanguageDto>
         {

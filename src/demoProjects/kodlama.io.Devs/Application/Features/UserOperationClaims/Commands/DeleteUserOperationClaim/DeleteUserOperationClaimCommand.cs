@@ -1,6 +1,7 @@
 ﻿using Application.Features.UserOperationClaims.Dtos;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
 using MediatR;
 using System;
@@ -11,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaim
 {
-    public class DeleteUserOperationClaimCommand : IRequest<DeletedUserOperationClaimDto>
+    public class DeleteUserOperationClaimCommand : IRequest<DeletedUserOperationClaimDto>, ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles { get; } = { "Admin" };
 
         public class DeleteUserOperationClaimCommandHandler : IRequestHandler<DeleteUserOperationClaimCommand, DeletedUserOperationClaimDto>
         {

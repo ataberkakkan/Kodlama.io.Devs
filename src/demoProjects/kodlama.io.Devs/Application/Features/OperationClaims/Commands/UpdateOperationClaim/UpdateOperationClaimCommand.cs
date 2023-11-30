@@ -2,6 +2,7 @@
 using Application.Features.OperationClaims.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
 using MediatR;
 using System;
@@ -12,10 +13,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.OperationClaims.Commands.UpdateOperationClaim
 {
-    public class UpdateOperationClaimCommand : IRequest<UpdatedOperationClaimDto>
+    public class UpdateOperationClaimCommand : IRequest<UpdatedOperationClaimDto>, ISecuredRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string[] Roles { get; } = { "Admin" };
 
         public class UpdateOperationClaimCommandHandler : IRequestHandler<UpdateOperationClaimCommand, UpdatedOperationClaimDto>
         {
